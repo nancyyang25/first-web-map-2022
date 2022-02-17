@@ -15,7 +15,7 @@ var map = new mapboxgl.Map({
   container: 'map', // container id
   style: 'mapbox://styles/mapbox/dark-v9', // YOUR TURN: choose a style: https://docs.mapbox.com/api/maps/#styles
   center: [-75, 43], // starting position [lng, lat]
-  zoom: 10,// starting zoom
+  zoom: 3,// starting zoom
   transformRequest: transformRequest
 });
 
@@ -27,7 +27,6 @@ $(document).ready(function () {
     dataType: "text",
     success: function (csvData) { makeGeoJSON(csvData); }
   });
-
 
 
   function makeGeoJSON(csvData) {
@@ -96,41 +95,3 @@ $(document).ready(function () {
     });
   };
 });
-
-
-
-
-/* var popup = new mapboxgl.Popup({
-  offset :40
-})
-  .setHTML('<h3>Washington Square Park</h3>');
-
-// add marker for wsp fountain
-var marker = new mapboxgl.Marker({
-.setLngLat(wspCenter)
-.setPopup(popup)
-.addTo(map);
-
-var pointsOfInterest = [
-  {
-    lngLat: [-74.016444,40.689438],
-    popupHtml: 'Nolan Park',
-  }
-  {
-    lngLat: [],
-    popupHtml: '',
-  }
-  {
-    lngLat: [],
-    popupHtml: '',
-  }
-]
-
-pointsOfInterest.forEACH(function(pointsOfInterest){
-  var mapboxgl.Marker()
-  .setLngLat(pointsOfInterest.LngLat)
-  .setPopup(popup)
-  .addTo(map);
-}
-)
-*/
