@@ -8,12 +8,12 @@ var transformRequest = (url, resourceType) => {
       : url
   };
 };
-//YOUR TURN: add your Mapbox token
 
+//unique token
 mapboxgl.accessToken = 'pk.eyJ1IjoibmFuY3kyMjM1IiwiYSI6ImNremhsenA3dzJibHgyb2t1aHA5ZzJvYXcifQ.ENgwmLpXLnphzFpbbmo-PQ'; //Mapbox token
 var map = new mapboxgl.Map({
   container: 'map', // container id
-  style: 'mapbox://styles/mapbox/dark-v9', // YOUR TURN: choose a style: https://docs.mapbox.com/api/maps/#styles
+  style: 'mapbox://styles/mapbox/dark-v9', // choose a style: https://docs.mapbox.com/api/maps/#styles
   center: [-75, 43], // starting position [lng, lat]
   zoom: 3,// starting zoom
   transformRequest: transformRequest
@@ -22,7 +22,7 @@ var map = new mapboxgl.Map({
 $(document).ready(function () {
   $.ajax({
     type: "GET",
-    //YOUR TURN: Replace with csv export link
+    //Replace with csv export link
     url: 'https://docs.google.com/spreadsheets/d/e/2PACX-1vSIzdqjbzp_TTBNW4P_U5xNYtPiKcTFpQ3IT8he7_I5Kr2VF_2XwnLkQvk-y4bdIb_zQwMqZEBorwUV/pub?gid=0&single=true&output=csv',
     dataType: "text",
     success: function (csvData) { makeGeoJSON(csvData); }
@@ -47,7 +47,9 @@ $(document).ready(function () {
           },
           'paint': {
             'circle-radius': 5,
-            'circle-color': "purple"
+            'circle-color': "steelblue",
+            'circle-opacity': 0.7,
+            'circle-radius': 8
           }
         });
 
@@ -58,7 +60,7 @@ $(document).ready(function () {
           var coordinates = e.features[0].geometry.coordinates.slice();
 
           //set popup text
-          //You can adjust the values of the popup to match the headers of your CSV.
+          // adjust the values of the popup to match the headers of CSV.
           // For example: e.features[0].properties.Name is retrieving information from the field Name in the original CSV.
           var description = `<h3>` + e.features[0].properties.CityName + `</h3>` +`</h4>` + `<h4>` + `<b>` + `When: ` + `</b>` + e.features[0].properties.When + `</h4>`;
 
